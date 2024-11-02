@@ -1,20 +1,20 @@
 const fs = require("fs");
 const fileName = "largefile_nonstream.txt";
-const LOOP_AMOUNT = 1e8;
+const LOOP_AMOUNT = 1e6;
 
 console.time("non-streaming");
 
-// const data =
-//   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula.\n";
-// let file = fs.createWriteStream(fileName);
+const data =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula.\n";
+let file = fs.createWriteStream(fileName);
 
-// for (let i = 0; i <= LOOP_AMOUNT; i++) {
-//   file.write(data);
-// }
+for (let i = 0; i <= LOOP_AMOUNT; i++) {
+  file.write(data);
+}
 
-// file.end(() => {
-//   console.timeEnd("non-streaming");
-// });
+file.end(() => {
+  console.timeEnd("non-streaming");
+});
 
 const fileNameStream = "largefile_stream.txt";
 console.time("streaming");
